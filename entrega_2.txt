@@ -1,0 +1,88 @@
+Generalización / Especialización:
+
+- Especialización (Superclase Personas se generan varias entidades hijas (Jugador, Árbitro)
+- Disjunta/exclusiva. No se permite que un jugador participe como árbitro y  jugador a la vez
+- Total. La entidad padre se ha de materializar en una de las entidades hijas sí o sí
+
+Resultado: Disjunta exclusiva total
+
+Modelo Relacional:
+
+Personas (DNI, Nombre, Apellido_1, Apellido_2, Fecha_Nacimiento, ID_Federación*)
+Teléfonos (DNI*, Teléfonos)
+Jugadores (ID_Jugador, DNI*, ID_Federado, Año_Federado, Pos_Rank_Nac )
+Árbitros (ID_Árbitro, DNI*, ID_Colegiado, Núm_Años_Árb )
+Federaciones (ID_Federación, Nombre_Región, Fecha_Fundación, Núm_Total_Jugadores, Núm_Total_Árbitros)
+Hoteles (ID_Hotel, Nombre_Hotel, Categoría, Dirección, Núm_Total_Habitaciones)
+Teléfonos (ID_Hotel*, Teléfonos)
+Hospedan (DNI*, ID_Hotel*, Núm_Habitación, Fecha_Entrada_Habitación, Fecha_Salida)
+Partidas (ID_Partida, Duración, ID_Árbitro*)
+Fecha_Partidas (ID_Partida*, Fecha_Partida, Hora_Partida)
+Jugar_Partidas (ID_Jugador*, ID_Partida*, Color_Fichas, Puesto_Jugador)
+Movimientos (Núm_Orden_Jugada, Núm_Casilla_Inicial, Núm_Casilla_Final, Comentario_Movimiento, ID_Partida*, Jugador)
+Salas (Núm_Sala, ID_Hotel*, Capacidad_Sala, Descripción)
+
+
+
+Aclaraciones:
+
+Jugadores: Los jugadores no pueden participar como árbitros a la vez o viceversa. Sin embargo, hay jugadores que pueden
+tener la licencia de árbitro. Por este motivo existe el atributo en Jugadores "Licencia_c_Árbitro". Se trata de un atributo
+de tipo booleano que dirá si tienen (True) o no (False) la licencia de árbitro.
+
+Entidades débiles: Movimiviento y Sala. Sala es una entidad débil de tipo existencial. Si no se reservan/hospedan partidas
+en los hoteles, las salas no existen. La entidad débil Movimiento por otro lado es de tipo identificación. Además de 
+la dependencia existencial sobre Partida, también necesita la entidad fuerte para crear sus propios atributos; jugadores.
+
+
+
+FN1:
+
+En la primera fase normal o FN1 se prohíbe que en una tabla haya atributos que puedan tomar más de un valor a la vez.
+
+Aquellos atributos que puedan tomar más de un valor a la vez, deberán de ser eliminados de la tabla y formarán una 
+entidad completamente nueva por su propia cuenta.
+
+---
+
+Personas (DNI, Nombre, Apellido_1, Apellido_2, Fecha_Nacimiento, ID_Federación*)
+
+Teléfonos (DNI*, Teléfonos)
+
+Jugadores (ID_Jugador, DNI*, ID_Federado, Año_Federado, Pos_Rank_Nac )
+
+Árbitros (ID_Árbitro, DNI*, ID_Colegiado, Núm_Años_Árb )
+
+Federaciones (ID_Federación, Nombre_Región, Fecha_Fundación, Núm_Total_Jugadores, Núm_Total_Árbitros)
+
+Hoteles (ID_Hotel, Nombre_Hotel, Categoría, Dirección, Núm_Total_Habitaciones)
+
+Teléfonos (ID_Hotel*, Teléfonos)
+
+Hospedan (DNI*, ID_Hotel*, Núm_Habitación, Fecha_Entrada_Habitación, Fecha_Salida)
+
+Partidas (ID_Partida, Duración, ID_Árbitro*)
+
+Fecha_Partidas (ID_Partida*, Fecha_Partida, Hora_Partida)
+
+Jugar_Partidas (ID_Jugador*, ID_Partida*, Color_Fichas, Puesto_Jugador)
+
+Movimientos (Núm_Orden_Jugada, Núm_Casilla_Inicial, Núm_Casilla_Final, Comentario_Movimiento, ID_Partida*, Jugador)
+
+Salas (Núm_Sala, ID_Hotel*, Capacidad_Sala, Descripción)
+
+---
+
+FN2:
+
+Para aplicar la segunda forma normal o FN2 el modelo ha de estar en FN1. Hemos comprobado anteriormente que efectivamente
+lo está.
+
+La FN2 dicta que cada atributo que no forma parte de la clave tiene que tener una dependencia fncional completa de la clave
+principal o Primary Key; aquellos atributos que están subrayados.
+
+Una vez se identifican los atributos que no dependan da la clave principal, se formará con ellos una nueva entidad y se 
+eliminarán de la original. Además, la clave primeria de la nueva entidad estará formada por parte de la antigua de la que
+sí dependían funcionalmente los atributos (en caso de ser compuestas).
+
+

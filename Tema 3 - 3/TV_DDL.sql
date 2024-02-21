@@ -13,14 +13,13 @@ DROP SCHEMA IF EXISTS `Cadena_TV` ;
 -- Schema Cadena_TV
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `Cadena_TV` DEFAULT CHARACTER SET utf8 ; -- Outdated utf8 character set 
-ALTER DATABASE `Cadena_TV` CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci; -- We modify if to we get the proper CHARSET and no warning
+ALTER DATABASE `Cadena_TV` CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci ; -- We modify if to we get the proper CHARSET and no warning
 USE `Cadena_TV` ;
 
 -- -----------------------------------------------------
 -- Table `Cadena_TV`.`Empleados`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Empleados` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Empleados` (
   `DNI` VARCHAR(20) NOT NULL,
   `Nombre_Pila` VARCHAR(20) NOT NULL,
@@ -38,10 +37,9 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`Teléfonos_Empleados`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Teléfonos_Empleados` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Teléfonos_Empleados` (
   `DNI_Empleado` VARCHAR(20) NOT NULL,
-  `Teléfono` VARCHAR(45) NOT NULL,
+  `Teléfono` VARCHAR(20) NOT NULL,
   INDEX `DNI_Empleados_idx` (`DNI_Empleado` ASC) VISIBLE,
   PRIMARY KEY (`Teléfono`),
   CONSTRAINT `DNI_Empleados`
@@ -56,7 +54,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`Email_Empleados`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Email_Empleados` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Email_Empleados` (
   `DNI_Empleado` VARCHAR(20) NOT NULL,
   `Email` VARCHAR(45) NOT NULL,
@@ -74,7 +71,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`Canales`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Canales` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Canales` (
   `ID_Canal` INT NOT NULL,
   `Nombre` VARCHAR(20) NOT NULL,
@@ -87,7 +83,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`Directivos`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Directivos` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Directivos` (
   `DNI_Directivo` VARCHAR(20) NOT NULL,
   `Año_Inicio` DATE NOT NULL,
@@ -104,7 +99,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`Presentadores`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Presentadores` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Presentadores` (
   `DNI_Presentador` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`DNI_Presentador`),
@@ -120,7 +114,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`Técnicos`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Técnicos` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Técnicos` (
   `DNI_Técnico` VARCHAR(20) NOT NULL,
   `Título` VARCHAR(20) NOT NULL,
@@ -138,7 +131,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`Periodistas`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Periodistas` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Periodistas` (
   `DNI_Periodista` VARCHAR(20) NOT NULL,
   `Universidad` VARCHAR(20) NULL,
@@ -155,7 +147,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`Programas`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Programas` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Programas` (
   `ID_Programa` INT NOT NULL,
   `Canal_ID` INT NOT NULL,
@@ -178,7 +169,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`Emisiones`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Emisiones` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Emisiones` (
   `Nº_Emisión` INT NOT NULL,
   `Programa_ID` INT NOT NULL,
@@ -205,7 +195,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`Anuncios`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`Anuncios` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`Anuncios` (
   `ID_Anuncios` INT NOT NULL,
   `Producto` VARCHAR(20) NULL,
@@ -220,7 +209,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`EmpleadosCanales`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`EmpleadosCanales` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`EmpleadosCanales` (
   `DNI_Empleados` VARCHAR(20) NOT NULL,
   `Canal_ID` INT NOT NULL,
@@ -247,7 +235,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`DirectivoDirigeCanales`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`DirectivoDirigeCanales` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`DirectivoDirigeCanales` (
   `DNI_Directivo` VARCHAR(20) NOT NULL,
   `Canal_ID` INT NOT NULL,
@@ -273,7 +260,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`PeriodistasProgramas`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`PeriodistasProgramas` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`PeriodistasProgramas` (
   `DNI_Periodistas` VARCHAR(20) NOT NULL,
   `Programa_ID` INT NOT NULL,
@@ -297,7 +283,6 @@ ENGINE = InnoDB;
 -- Table `Cadena_TV`.`EmisiónAnuncios`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Cadena_TV`.`EmisiónAnuncios` ;
-
 CREATE TABLE IF NOT EXISTS `Cadena_TV`.`EmisiónAnuncios` (
   `Nº_Emisión` INT NOT NULL,
   `Anuncios_ID` INT NOT NULL,

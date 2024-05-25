@@ -89,6 +89,8 @@ ENGINE = InnoDB;
 
 /*
 
+NOTA: no funcionarán si no se añade el atributo del punto 3
+
 INSERT INTO `CURSOS` VALUES (-1, 'Informática', 500, 'DAW');
 INSERT INTO `CURSOS` VALUES (1, 'Informática', 0, 'DAW');
 
@@ -137,7 +139,7 @@ ADD CONSTRAINT CHK_NoMismoCurso CHECK (`RefCursoARealizar` != `RefCursoRequisito
 ALTER TABLE `EMPLEADOS`
 DROP `Nacion`;
 
--- 9. Reverse Engineer la DB para obtener el d iagrama
+-- 9. Reverse Engineer la DB para obtener el diagrama
 
 -- 10. Eliminar todas las relaciones de la base de datos
 

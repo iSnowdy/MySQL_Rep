@@ -113,9 +113,7 @@ DROP TABLE IF EXISTS `Parchis_Tournament`.`Hoteles` ;
 CREATE TABLE IF NOT EXISTS `Parchis_Tournament`.`Hoteles` (
   `ID_Hotel` INT NOT NULL AUTO_INCREMENT,
   `Nombre_Hotel` VARCHAR(45) NOT NULL,
-  `Categoría` ENUM('1', '2', '3', '4', '5'), -- Modificamos la DDL para que tenga sólo 5 posibles valores.
-  -- Algo muy importante a destacar aquí es que ENUM sólo toma como entrada datos tipo String. Por tanto, si queremos dar una categoría no podrá ser introducido como un INT (1), sino como char o String ('1). Esto
-  -- será muy relevante luego a la hora de programar la base de datos
+  `Categoría` INT NULL,
   `Dirección` VARCHAR(45) NULL,
   `Núm_Total_Habitaciones` INT NOT NULL,
   PRIMARY KEY (`ID_Hotel`))
@@ -205,8 +203,8 @@ CREATE TABLE IF NOT EXISTS `Parchis_Tournament`.`Hospedan` (
   `Personas_DNI_Personas` VARCHAR(45) NOT NULL,
   `Hoteles_ID_Hotel` INT NOT NULL,
   `Número_Habitación` INT NOT NULL,
-  `Fecha_Entrada_Habitación` DATETIME NOT NULL, -- Cambiamos a DATETIME para evitar confusiones de múltiples Check_In/Out el mismo día
-  `Fecha_Salida_Habitación` DATETIME NULL,
+  `Fecha_Entrada_Habitación` DATE NOT NULL,
+  `Fecha_Salida_Habitación` DATE NULL,
   PRIMARY KEY (`Personas_DNI_Personas`, `Hoteles_ID_Hotel`),
   INDEX `fk_Personas_has_Hoteles_Hoteles1_idx` (`Hoteles_ID_Hotel` ASC) VISIBLE,
   INDEX `fk_Personas_has_Hoteles_Personas1_idx` (`Personas_DNI_Personas` ASC) VISIBLE,
@@ -230,7 +228,7 @@ DROP TABLE IF EXISTS `Parchis_Tournament`.`Jugar_Partidas` ;
 CREATE TABLE IF NOT EXISTS `Parchis_Tournament`.`Jugar_Partidas` (
   `Jugadores_ID_Federado` INT NOT NULL,
   `Partidas_ID_Partida` INT NOT NULL,
-  `Color_Fichas` ENUM('Azul', 'Amarillo', 'Verde', 'Rojo') NULL, -- Denotamos los valores específicos que las fichas pueden tener
+  `Color_Fichas` VARCHAR(10) NULL,
   `Puesto_Jugador` INT NULL,
   PRIMARY KEY (`Jugadores_ID_Federado`, `Partidas_ID_Partida`),
   INDEX `fk_Jugadores_has_Partidas_Partidas1_idx` (`Partidas_ID_Partida` ASC) VISIBLE,

@@ -57,14 +57,15 @@ ENGINE = InnoDB;
 INSERT INTO `Usuarios`
 VALUES
 
-('555999222', 'Andy', 'López', 'Rey', 'Calvià', '1999-09-05'),
-('231589456', 'Pepe', 'Heym', 'Nova', 'Palma', '1969-02-05'),
-('123456789', 'Cristian', 'García', 'Kasa', 'Manacor', '2001-02-06'),
-('987654321', 'Juán', 'Armin', 'Petreo', 'Inca', '1989-01-02');
+('555999222', 'Andy', 'López', 'Rey', '1999-09-05'),
+('231589456', 'Pepe', 'Heym', 'Nova', '1969-02-05'),
+('123456789', 'Cristian', 'García', 'Kasa', '2001-02-06'),
+('987654321', 'Juán', 'Armin', 'Petreo', '1989-01-02');
 
 SELECT * FROM `Usuarios`;
 
--- INSERT INTO `Usuarios` VALUES ('555999222', 'Andy', 'López', 'Rey', 'Calvià', '1000-01-01'); Comprobamos que la constraint funcione :)
+-- INSERT INTO `Usuarios` VALUES ('555999222', 'Andy', 'López', 'Rey', '1000-01-01'); 
+-- Comprobamos que la constraint funcione :)
 
 INSERT INTO `COMPANIAS`
 VALUES
@@ -74,7 +75,8 @@ VALUES
 
 SELECT * FROM `COMPANIAS`;
 
--- INSERT INTO `COMPANIAS` VALUES (3, 'CISC', 2024); Comprobamos que funciona la constraint :D
+-- INSERT INTO `COMPANIAS` VALUES (3, 'CISC', 2024); 
+-- Comprobamos que funciona la constraint :D
 
 INSERT INTO `TELEFONOS` 
 VALUES

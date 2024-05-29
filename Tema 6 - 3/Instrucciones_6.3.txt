@@ -1,0 +1,32 @@
+Nuestro equipo de programación utiliza una DDBB (employees) para llevar a cabo sus tareas de codificación y pruebas del código. 
+
+Por lo que le proporcionamos una DDBB con datos "frescos" cada mañana.
+
+
+
+Crea un evento que, a una hora determinada, refresque esta DDBB de desarrollo / test. 
+
+Primero, debes vaciar completamente la existente, ya que se considera que el contenido está contaminado. 
+
+Luego, hay que volcar los datos "frescos", pero no todos, como esta DDBB employees es "grande" solo se vuelca una parte representativa de los datos.
+
+Consideramos que la parte representativa es la información activa, no el historial.
+
+
+
+departments: No tiene historial, se vuelca toda. 
+dept_emp: Solamente las tuplas activas, esto es, las que to_date = '9999-01-01'; 
+
+dept_manager: Solamente las tuplas activas, esto es, las que to_date = '9999-01-01'; 
+
+employees; Solamente los empleados activos, es decir, los que tengan relación con algún departamento, y esta relación tenga como fecha de fin '9999-01-01'
+
+salaries: Solamente de los empleados activos, y solamente el salario activo, no el historial, to_date = '9999-01-01'
+
+titles: Solamente de los empleados activos, y solamente el activo, no el historial, to_date = '9999-01-01'
+
+
+
+Se recomienda planificar una estrategia, por ejemplo, diseñar los select para corroborar que funcionan ok, 
+
+crear procedimientos almacenados con estos select y probar que funcionan, finalmente llamar a los select desde el evento 

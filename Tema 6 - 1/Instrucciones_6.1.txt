@@ -1,0 +1,44 @@
+Crear los procedimientos / funciones almacenados para CRUD (Crate, Read, Update, Delete)
+
+crea_staff / read_staff / update_staff / delete_staff
+
+sobre la siguiente la tabla staff de la siguiente DDBB:
+
+
+
+Si no se aporta Start_Date tomará fecha actual
+Si el salario es > max, entonces salario = max
+Si el salario es < min, entonces salario = min 
+Si Superior Officer = null, entonces es él mismo. 
+
+
+use t5_employees; 
+
+desc department; 
+
+
+
+Field                      Type             |Null|Key|Default|Extra|
+---------------+-----------------+----+---+-------+-----+
+Department_Code |smallint unsigned|NO  |PRI|       |     |
+Department_Name|varchar(15)          |NO  |   |       |     |
+City                        |varchar(15)          |NO  |   |       |     |
+
+
+
+
+desc staff; 
+
+
+
+Field           |Type             |Null|Key|Default|Extra|
+----------------+-----------------+----+---+-------+-----+
+Employee_Code   |smallint unsigned|NO  |PRI|       |     |
+Name                    |varchar(25)          |NO  |   |       |     |
+Job                        |varchar(25)          |NO  |   |       |     |
+Salary                   |decimal(7,2)         |YES |   |       |     |
+Department_Code |smallint unsigned|YES |MUL|       |     |
+Start_Date             |date                      |NO  |   |       |     |
+Superior_Officer   |smallint unsigned|NO  |MUL|       |     |
+
+

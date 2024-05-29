@@ -1,0 +1,40 @@
+Modifica el modelo t5_employees para que audite los cambios de salario mediante un trigger y la siguiente tabla ( Salary_Audit)
+
+Field                        |Type             |Null|Key|Default|Extra|
+-----------------------------+-----------------+----+---+-------+-----+
+audit_user                   |varchar(50)      |NO  |   |       |     |
+audit_time                   |datetime         |NO  |   |       |     |
+employee_code                |smallint unsigned|NO  |   |       |     |
+old_employee_name            |varchar(25)      |NO  |   |       |     |
+old_job                      |varchar(25)      |NO  |   |       |     |
+old_salary                   |decimal(7,2)     |YES |   |       |     |
+old_department_code          |smallint unsigned|YES |   |       |     |
+old_start_date               |date             |NO  |   |       |     |
+old_employee_superior_Officer|smallint unsigned|NO  |   |       |     |
+new_employee_name            |varchar(25)      |NO  |   |       |     |
+new_job                      |varchar(25)      |NO  |   |       |     |
+new_salary                   |decimal(7,2)     |YES |   |       |     |
+new_department_code          |smallint unsigned|YES |   |       |     |
+new_start_date               |date             |NO  |   |       |     |
+new_employee_superior_Officer|smallint unsigned|NO  |   |       |     |
+
+Modifica el modelo para que sea capaz de gestionar el historial de sueldos del empleado en una nueva tabla y un trigger
+Esta tabla de historial de sueldos (Salary_History) deberá tener la siguiente estructura:
+
+
+Field          |Type             |Null|Key|Default|Extra|
+---------------+-----------------+----+---+-------+-----+
+Employee_Code  |smallint unsigned|NO  |PRI|       |     |
+Date_New_Salary|date             |NO  |PRI|       |     |
+Salary         |decimal(7,2)     |NO  |   |       |     |
+
+
+La tabla debe mantenerse automáticamente mediante triggers: 
+
+Inserción nuevo empleado --> crea primera tupla del historial
+Modificación salario empleado --> crea nueva tupla en historial con nuevo salario 
+
+Eliminación del empleado --> borra todas las tuplas del historial 
+
+Nota: Al haber 2 triggers sobre la misma tabla consulta [trigger_order]
+
